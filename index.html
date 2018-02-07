@@ -71,9 +71,113 @@
           <!-- Blog Post -->
 
 
+    <!-- WEEK 4 WRITEUP --> 
+
+    <div class="card mb-4">
+
+
+            <!--
+            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            --> 
+            <img class="card-img-top" src="images/Week4/gra.png" alt="">
+            <div class="card-body">
+              <h2 class="card-title">Week 4</h2>
+              <p class="card-text">
+                 In Week 4, the lectures centered around the topic of vulnerabilities and exploitation.  In specific we studied the more common methods in which attackers use to gain access inside a network defensive perimeter, and that's the internet browser.  
+              </p>
+              <p>
+              	Nowadays, most business have strong DMZ and firewalls to protect the business from attacks outside the perimeter, but as we've learned in this course, a business is only as strong as its weakest link.  In modern times, attackers employ social engineering tactics to gain access inside a network.  One strategy that employs social engineering along with sophisticated attacks is having the user visit a page, have the page load JavaScript code that will take advantage of a browser function or vulnerability.  
+              </p>
+              <p>
+              	This week we discussed two ways we can manipulate memory via the stack through the browser. 
+              </p>
+              <ul>
+                <li>Stack Smashing / Memory Corruption</li>
+				<li>Use After Free Vulnerabilities </li>
+              </ul>
+              <p>
+              	Stack Smashing
+              </p>
+              <p>
+              	In order to corrupt the stack, we need to a few things as per the lectures: 
+              </p>
+              <ol>
+                <li>Perform a crash triage </li>
+				<li>Determine the return address offset  </li>
+				<li>Position our shellcode </li>
+				<li>Find the address of our shell code so it can "live" on the stack</li>
+              </ol>
+              <p>
+              	A stack smash occurs when the stack buffer is filled with data supplied from an untrusted user and the data is corrupts the stack and malicious executable code is injected into the stack.  The code is executed when the stack attempts to perform a return to a function via the return address on EIP, but the attacker uses a NOP slide to position EIP to their malicious code on the stack. 
+              </p>
+              <p>
+              	For reference, as mentioned in the lectures, a NOP slide is a sequence of no operations meant to "slide" the CPU's instruction pointer to a desired destination whenever the program branches to a memory address anywhere on the slide. 
+              </p>
+              <img class="card-img-top" id="stacksmash" src="images/Week4/stack5.gif">
+              <p>
+              	Operating systems have now implemented various protection schemes to protect against a stack smash.  In my research I found these protections can be classified into three categories: 
+              </p>
+           	  <ul>
+                <li>Detect the stack buffer overflow has occurred and prevent redirection of EIP to the malicious code </li>
+				<li>Prevent the execution of malicious code from the stack without directly detecting the stack buffer overflow</li>
+				<li>Randomize the memory space such that finding executable code becomes unreliable (i.e. Address Space Layout Randomization / ASLR)</li>
+              </ul>
+              <p>
+              	Use-After-Free 
+              </p>
+              <p>
+              	Use after free is another method used to exploit memory via the browser.  This vulnerability is triggered when an object in memory is freed and then reference later by the application, but the attacker has control of the freed object/memory.  In order for this the following conditions must be present for the attacker to exploit: 
+              </p>
+              <ol>
+              	<li>Load shellcode in memory at a predictable address </li>
+              	<li>Force an object to be freed and then overwrite it with one that includes a virtual table pointer (VPTR) linked to a fake vtable (virtual table) pointing to the shellcode loaded in step 1 </li>
+              	<li>Trigger a vulnerability in the browser to reuse the freed object (which now has malicious pointers inserted by the attacker) and redirect execution flow to the shellcode loaded in memory </li>
+              </ol>
+              <p>
+              	Below is a diagram showing the flow of a use-after-free exploit: 
+              </p>
+              <img class="card-img-top" id="useafterfree" src="images/Week4/image662.jpg">
+              <p>
+              	Modern browsers, like Microsoft's Edge in Windows 10, have functions in place to mitigate use after free exploits.  Recently, Microsoft introduced MemGC which prevents the freeing of memory chunks if references to them are found.  MemGC checks the registers and the stack for chunk references, and in addition, scans the contents of MemGC managed chunks for references.  
+              </p>
+              <p>
+              	Below is flowchart of how MemGC works: 
+              </p>
+              <img class="card-img-top" id="memgc" src="images/Week4/memgc.png">
+              <p>
+              	For more information you can click on the link below.  It's an article from LinkedIn on a BlackHat session in which the presenter discusses MemGC.  
+              </p>
+              <p><a href="https://www.linkedin.com/pulse/memgc-use-after-free-exploit-mitigation-edge-ie-10-mayur-agnihotri">MemGC: Use-After-Free Exploit Mitigation In Edge and IE In Windows 10</a>
+              </p>
+              <p>
+              	Tools
+              </p>
+              <p>
+              	Also, in the lecture we discussed how WinDbg is a great tool for establishing breakpoints in applications and examining the applications assembly code.  WinDbg is also extremely useful when attempting to review  the stack and heap starting points, strings in the applications, and register contents, including the instruction pointer.  
+              </p>
+              <p>
+              	WinDbg can also be used to install breakpoints in running process/applications. Allowing a user to observe behavior incrementally in real time.  Below is an article discussing debugging malware with WinDbg
+              </p>
+              <p><a href="https://www.ixiacom.com/company/blog/debugging-malware-windbg">Debugging Malware with WinDbg</a>
+              </p>
+              
+            </div>
+            <div class="card-footer text-muted">
+              Posted on February 6, 2018 by
+              <a href="https://github.com/saldanaj">Joaquin Saldana</a>
+            </div>
+        </div>
+
+
+
+
+
+
+
     <!-- WEEK 3 WRITEUP --> 
 
     <div class="card mb-4">
+
 
             <!--
             <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
