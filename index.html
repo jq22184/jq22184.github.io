@@ -71,6 +71,67 @@
           <!-- Blog Post -->
 
 
+    <!-- WEEK 5 WRITEUP --> 
+
+    <div class="card mb-4">
+
+
+            <!--
+            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            --> 
+            <img class="card-img-top" src="images/Week5/rootkit-623x409.png" alt="">
+            <div class="card-body">
+              <h2 class="card-title">Week 5</h2>
+              <p class="card-text">
+              	A rootkit is one of the most difficult types of malware to find and remove.  Once a rootkit installs itself on your computer, it will boot up at the same time as your PC.  There are various forms of rootkits which different degrees of severity.  Below is an illustration of the layered differences in the severity: 
+              </p>
+              <p>
+              	<img class="card-img-top" id="rootkitseverity" src="images/Week5/rootkitseverity.jpeg">
+              </p>
+              <p>
+              	In week 5 lecture, we discussed about the most severe rootkits which are the kernel rootkits.  This type of rootkit is designed to function at the level of the operating system itself.  This means the rootkit can effectively add new code to the OS, or even delete and replace OS code.  
+              </p>
+              <p>
+              	Rootkits have a tendency to target important structures within the Windows operating system for the purposes of stealth and persistence.  This is also known as hooking.  Below are some examples: 
+              </p>
+              <ul>
+                <li>System Service Descriptor Table (SSDT) - is an internal dispatch table within Microsoft Windows.  This is a structure that is normally "hooked" by a rootkit.  The SSDT table holds the pointer to kernel functions, which are used upon system call invocation.   </li>
+                <li>Interrupt Descriptor Table (IDT) - is used by the processor to determine the correct response to interrupts and exceptions.  Some Windows programs hook calls to the IDT.  This involves writing a kernel mode driver that intercepts calls to the IDT and adds in it's own processing.  </li>
+              </ul>
+              <p>
+              	Below is a simple example of how a rootkit can manipulate calls to the IDT.  
+              </p>
+              <img class="card-img-top" id="idtattack1" src="images/Week5/idtattack1.jpeg">
+              <img class="card-img-top" id="idtattack2" src="images/Week5/idtattack2.jpeg">
+              <img class="card-img-top" id="idtattack3" src="images/Week5/idtattack3.jpeg">
+              <img class="card-img-top" id="idtattack4" src="images/Week5/idtattack4.jpeg">
+              <img class="card-img-top" id="idtattack5" src="images/Week5/idtattack5.jpeg">
+              <img class="card-img-top" id="idtattack6" src="images/Week5/idtattack6.jpeg">
+              <p>
+              	Furthermore, below is an article of a rootkit attack involving the Windows SSDT.  
+              </p>
+              <p>
+              	<a href="http://resources.infosecinstitute.com/hooking-system-service-dispatch-table-ssdt/#gref">InfoSec Article - SSDT Hooking</a>
+              </p>
+              <p>
+              	Most recently, bad actors have started to migrate towards to digital certificates as a means to successfully installing malware on a victims machine.  A certificate is issued by an organization recognized as "trusted' by the parties involved and is used ordinarily for operations of public key cryptography.  
+              </p>
+              <p>
+              	However, digital certificates can be used abused to conduct illicit activities like cyber espionage, sabotage or aid in the dissemination of malware.  This is a highly valuable asset for actors since it can grant their application low level access to the victims machine. 
+              </p>
+              
+            </div>
+            <div class="card-footer text-muted">
+              Posted on February 13, 2018 by
+              <a href="https://github.com/saldanaj">Joaquin Saldana</a>
+            </div>
+        </div>
+
+
+
+
+
+
     <!-- WEEK 4 WRITEUP --> 
 
     <div class="card mb-4">
