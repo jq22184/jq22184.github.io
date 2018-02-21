@@ -71,6 +71,74 @@
           <!-- Blog Post -->
 
 
+    <!-- WEEK 6 WRITEUP --> 
+
+    <div class="card mb-4">
+
+
+            <!--
+            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            --> 
+            <img class="card-img-top" src="images/Week6/Heartbleed-bug-major-openssl-sequrity-leak-featured-670x300.png" alt="">
+            <div class="card-body">
+              <h2 class="card-title">Week 6</h2>
+              <p class="card-text">
+				This week we discussed multiple ways to defend and attack a network.  In specific, we discussed the following protection strategies: 
+              </p>
+              <ul>
+                <li>Having a policy for both positive and negative movement within the network.  This includes applications, HTTP traffic and more </li>
+				<li>Having a firewall designated as the network's DMZ.  Network segmentation within the DMZ/firewall is critical.  </li>
+				<li>Have a layered defense.  This includes not only having a firewall, but having a intrusion detection system, a security information and event management system (i.e. LogRythm) and ensuring that these system can talk to each other via functioning API's.  This is important since most of these systems may come from different applications and vendors.  </li>
+				<li>Intrusion detection which is the searching and monitoring for things you DON'T want to happen on your network.  However, this does have its limitation.  In example, does may not help you in your efforts to detect attacks involving zero day vulnerabilities.  </li>
+				<li>Quarantine hosts that may be infected so the infection does not spread across the network to other hosts.  This could also include a blacklist component</li>
+              </ul>
+              <p>Other examples of strategies include honeypots/honeynet's and reputation.  </p>
+              <p>
+              	Other topics also discussed in the lecture were attacks against networks.  One in particular I found interesting was Man In the Middle Attacks (MITM).  
+              </p>
+              <img class="card-img-top" id="rootkitseverity" src="images/Week6/man-in-the-middle-mitm.jpg">
+              <p>
+              	Having worked as a fraud investigator, I investigated various cases of fraud in which bank users/clients were victims of online banking and wire fraud.  Most of which was perpetrated via MITM attacks.  This mounted to large losses for the financial institutions who paid out such claims to the clients who losses were not reimbursed by the same banks.  
+              </p>
+              <p>
+              	In our investigations, our immediate source for review was the online banking session logs.  Most often than not, we would find various session log in and activity from multiple IP addresses in concurrency with the legitimate user's activity (i.e. while the bank client was performing a balance inquiry via an IP address in Venezuela, another user was performing a wire transfer request via an IP address in Russia, both using the same session ID).  These investigations proved frustrating but I was interested how these attacks could be carried out against sophisticated online banking platforms.  Most often than not, the client's devices were unpatched and poorly secured.  
+              </p>
+              <p>
+              	One part of the lecture that interested me regarding man in the middle attacks was SSL renegotiation attacks. Renegotiation is required when no client-server authentication is initially required while making an SSL connection but is required later.  Thus instead of dropping and creating a new SSL connection, renegotiation adds authentication details to the current connection.  
+              </p>
+              <p>
+              	However renegotiation is vulnerable to attacks.  Two worries are: 
+              </p>
+               <ol>
+                <li>A man in the middle attacker can inject data into an HTTPS session and execute requests on behalf of the victim  </li>
+				<li>Denial of Service (DoS), by establishing a secure SSL connection requires more processing power on the server, an attacker can exploit this processing power property with renegotiation to trigger hundreds of handshakes in the same TCP connection.    </li>
+              </ol>
+              <p>
+              	There are ways to mitigate these threats.  Some are: 
+              </p>
+              <ul>
+                <li>Renegotiation is not required by the majority of the sites.  Disable SSL renegotiation support on the server </li>
+				<li>Limit the number of SSL handshakes, or upgrade server resources by adding an SSL accelerator </li>
+              </ul>
+              <p>
+              	Below is a link to a proof of concept for TLS renegotiation and its vulnerability in which an attacker can perform a DoS attack.  
+              </p>
+              <p>
+              	<a href="https://www.ietf.org/mail-archive/web/tls/current/msg07553.html">Internet Engineering Task Force - SSL Renegotiation DoS</a>
+              </p>
+
+              
+            </div>
+            <div class="card-footer text-muted">
+              Posted on February 20, 2018 by
+              <a href="https://github.com/saldanaj">Joaquin Saldana</a>
+            </div>
+        </div>
+
+
+
+
+
     <!-- WEEK 5 WRITEUP --> 
 
     <div class="card mb-4">
